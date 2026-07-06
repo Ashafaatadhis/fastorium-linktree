@@ -41,12 +41,12 @@ const advantages = [
 
 export default function ResellerPage() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center overflow-hidden px-4 py-8">
+    <main className="relative flex min-h-[100dvh] flex-col items-center justify-start overflow-x-hidden overflow-y-auto px-6 py-8 sm:min-h-screen sm:px-4 sm:py-8">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-purple-50 via-white to-blue-50" />
       <AnimatedBackground />
 
       {/* Glass Section */}
-      <div className="glass-section relative z-10 flex w-full max-w-4xl flex-col items-center rounded-2xl px-5 py-6">
+      <div className="glass-section relative z-10 flex w-full max-w-full flex-col items-center rounded-2xl px-5 py-6 sm:max-w-4xl">
         <h1 className="text-3xl font-bold text-center tracking-tight text-purple-800 max-w-md">
           Mulai Perjalananmu Bersama Fastorium
         </h1>
