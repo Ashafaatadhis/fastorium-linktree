@@ -16,6 +16,16 @@ const products: Record<string, { duration: string; warranty: string; terms: stri
     ],
     maxDevice: 3,
   },
+  "Canva Pro Head": {
+    duration: "30 hari",
+    warranty: "Garansi 30 hari",
+    terms: [
+      "Akun shared/team.",
+      "Garansi berlaku jika backfree.",
+      "Garansi tidak berlaku jika head/tim terkena suspend/merah.",
+    ],
+    maxDevice: 3,
+  },
   "Spotify": {
     duration: "1 bulan / 3 bulan / 1 tahun",
     warranty: "Garansi 25 hari",
