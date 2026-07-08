@@ -105,7 +105,7 @@ export default function ResellerPage() {
             Langsung akses BOT-nya dan mulai cuan hari ini juga!
           </p>
           <a
-            href="https://t.me/fastorium_bot"
+            href="https://t.me/fastoriumapp_bot"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 flex items-center justify-center gap-2 rounded-full border border-purple-200/60 bg-white/40 px-8 py-4 text-lg font-semibold text-purple-800 shadow-lg shadow-purple-500/5 backdrop-blur-xl transition-all hover:bg-white/60 hover:shadow-purple-500/10"

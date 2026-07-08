@@ -26,7 +26,7 @@ export default function Home() {
 
         <nav className="mt-1 flex flex-col gap-2 w-full max-w-[260px] sm:max-w-[320px]">
           <a
-            href="https://wa.me/628xxxxxxxxxx"
+            href="https://wa.me/6285183098545"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-full border border-purple-200/60 bg-white/40 px-4 py-2.5 text-sm font-semibold text-purple-800 shadow-lg shadow-purple-500/5 backdrop-blur-xl transition-all hover:bg-white/60 hover:shadow-purple-500/10 sm:px-6 sm:py-3.5 sm:text-base"
