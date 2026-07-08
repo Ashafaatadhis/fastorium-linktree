@@ -11,7 +11,7 @@ export default function Home() {
       <AnimatedBackground />
 
       {/* Glass Section */}
-      <div className="glass-section relative z-10 flex h-full w-full max-w-full flex-col items-center justify-center gap-4 rounded-2xl px-5 py-6 text-center sm:h-auto sm:max-w-md sm:px-5 sm:py-6">
+      <div className="glass-section relative z-10 flex w-full max-w-full flex-col items-center justify-center gap-4 rounded-2xl px-5 py-6 text-center sm:max-w-md sm:px-5 sm:py-6">
         <Image
           src="/logo.png"
           alt="Fastorium"
