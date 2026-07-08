@@ -5,126 +5,148 @@ import { useState } from "react";
 import { ArrowLeft, ChevronDown } from "lucide-react";
 import { AnimatedBackground } from "@/components/animated-background";
 
-const products: Record<string, { duration: string; warranty: string; terms: string[] }> = {
-  "Canva": {
-    duration: "1 bulan / 1 tahun",
-    warranty: "Garansi 7 hari",
+const products: Record<string, { duration: string; warranty: string; terms: string[]; maxDevice: number }> = {
+  "Canva Edu": {
+    duration: "Lifetime",
+    warranty: "Garansi 30 hari",
     terms: [
       "Akun shared/team, bukan personal.",
-      "Dilarang mengganti email atau password.",
       "Garansi berlaku jika akun tidak bisa dipakai.",
-      "Tidak garansi jika terkena suspend karena pelanggaran.",
+      "Garansi tidak berlaku jika head/tim terkena suspend.",
     ],
+    maxDevice: 3,
   },
   "Spotify": {
     duration: "1 bulan / 3 bulan / 1 tahun",
-    warranty: "Garansi 30 hari",
+    warranty: "Garansi 25 hari",
     terms: [
       "Akun premium individual/family.",
       "Dilarang mengganti email atau password.",
       "Garansi berlaku jika akun expired sebelum waktunya.",
       "Tidak garansi jika login di lebih dari 1 device.",
     ],
-  },
-  "YouTube Premium": {
-    duration: "1 bulan / 3 bulan / 1 tahun",
-    warranty: "Garansi 30 hari",
-    terms: [
-      "Akun family/individual.",
-      "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
-      "Tidak garansi jika terkena suspend karena pelanggaran.",
-    ],
-  },
-  "Netflix": {
-    duration: "1 bulan",
-    warranty: "Garansi 30 hari",
-    terms: [
-      "Akun shared/private.",
-      "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
-      "Tidak garansi jika terkena suspend karena pelanggaran.",
-    ],
+    maxDevice: 1,
   },
   "CapCut": {
-    duration: "1 bulan / 1 tahun",
-    warranty: "Garansi 7 hari",
+    duration: "7 hari / 30 hari",
+    warranty: "Garansi sesuai durasi",
     terms: [
-      "Akun premium CapCut.",
+      "Plan individual/teams.",
       "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
+      "Garansi berlaku jika akun terkena backfree.",
       "Tidak garansi jika terkena suspend karena pelanggaran.",
     ],
+    maxDevice: 2,
   },
   "ChatGPT": {
-    duration: "1 bulan",
+    duration: "1 bulan / 3 bulan",
     warranty: "Garansi 30 hari",
     terms: [
-      "Akun ChatGPT Plus.",
+      "Akun ChatGPT Plus/Go.",
       "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
+      "Garansi berlaku jika akun terkena backfree.",
       "Tidak garansi jika terkena suspend karena pelanggaran.",
     ],
+    maxDevice: 8,
   },
   "Apple Music": {
-    duration: "1 bulan / 3 bulan / 1 tahun",
-    warranty: "Garansi 30 hari",
-    terms: [
-      "Akun Apple Music individual.",
-      "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
-      "Tidak garansi jika terkena suspend karena pelanggaran.",
-    ],
-  },
-  "Disney+": {
     duration: "1 bulan",
-    warranty: "Garansi 30 hari",
+    warranty: "Garansi login 1×24 jam",
     terms: [
-      "Akun shared.",
+      "Akun Apple Music individual/Head.",
       "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
+      "Garansi berlaku jika terkena backfree.",
       "Tidak garansi jika terkena suspend karena pelanggaran.",
     ],
-  },
-  "HBO Max": {
-    duration: "1 bulan",
-    warranty: "Garansi 30 hari",
-    terms: [
-      "Akun shared.",
-      "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
-      "Tidak garansi jika terkena suspend karena pelanggaran.",
-    ],
+    maxDevice: 3,
   },
   "Zoom": {
+    duration: "14 hari / 28 hari",
+    warranty: "Garansi sesuai durasi",
+    terms: [
+      "Akun Zoom Pro.",
+      "Dilarang mengganti email atau password.",
+      "Garansi berlaku jika akun terkena backfree.",
+      "Tidak garansi jika terkena suspend karena pelanggaran.",
+    ],
+    maxDevice: 3,
+  },
+  "Alight Motion": {
     duration: "1 bulan / 1 tahun",
     warranty: "Garansi 30 hari",
     terms: [
-      "Akun Zoom Pro/Business.",
+      "Akun shared/team.",
       "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
+      "Garansi berlaku jika akun terkena backfree.",
       "Tidak garansi jika terkena suspend karena pelanggaran.",
     ],
+    maxDevice: 3,
   },
-  "Microsoft 365": {
-    duration: "1 tahun",
-    warranty: "Garansi 30 hari",
-    terms: [
-      "Akun Microsoft 365 Personal/Family.",
-      "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
-      "Tidak garansi jika terkena suspend karena pelanggaran.",
-    ],
-  },
-  "Adobe Creative Cloud": {
+  "Wink": {
     duration: "1 bulan / 1 tahun",
     warranty: "Garansi 30 hari",
     terms: [
-      "Akun Adobe CC All Apps.",
+      "Akun shared/team.",
       "Dilarang mengganti email atau password.",
-      "Garansi berlaku jika akun tidak bisa dipakai.",
+      "Garansi berlaku jika akun terkena backfree.",
       "Tidak garansi jika terkena suspend karena pelanggaran.",
     ],
+    maxDevice: 2,
+  },
+  "Meitu": {
+    duration: "1 bulan / 1 tahun",
+    warranty: "Garansi 30 hari",
+    terms: [
+      "Akun shared/team.",
+      "Dilarang mengganti email atau password.",
+      "Garansi berlaku jika akun terkena backfree.",
+      "Tidak garansi jika terkena suspend karena pelanggaran.",
+    ],
+    maxDevice: 2,
+  },
+  "Viu": {
+    duration: "1 bulan / 1 tahun",
+    warranty: "Garansi 30 hari",
+    terms: [
+      "Akun shared/team.",
+      "Dilarang mengganti email atau password.",
+      "Garansi berlaku jika akun terkena backfree.",
+      "Tidak garansi jika terkena suspend karena pelanggaran.",
+    ],
+    maxDevice: 2,
+  },
+  "Grok AI": {
+    duration: "1 bulan / 3 bulan",
+    warranty: "Garansi 30 hari",
+    terms: [
+      "Akun Grok premium.",
+      "Dilarang mengganti email atau password.",
+      "Garansi berlaku jika akun terkena backfree.",
+      "Tidak garansi jika terkena suspend karena pelanggaran.",
+    ],
+    maxDevice: 3,
+  },
+  "Gemini AI": {
+    duration: "1 bulan / 3 bulan",
+    warranty: "Garansi 30 hari",
+    terms: [
+      "Akun Gemini Advanced.",
+      "Dilarang mengganti email atau password.",
+      "Garansi berlaku jika akun terkena backfree.",
+      "Tidak garansi jika terkena suspend karena pelanggaran.",
+    ],
+    maxDevice: 5,
+  },
+  "Prime Video": {
+    duration: "1 bulan",
+    warranty: "Garansi 30 hari",
+    terms: [
+      "Akun shared/team.",
+      "Dilarang mengganti email atau password.",
+      "Garansi berlaku jika akun terkena backfree.",
+      "Tidak garansi jika terkena suspend karena pelanggaran.",
+    ],
+    maxDevice: 4,
   },
 };
 
@@ -183,6 +205,12 @@ export default function TermsPage() {
                     Garansi
                   </span>
                   <p className="text-gray-700">{data.warranty}</p>
+                </div>
+                <div>
+                  <span className="text-sm font-semibold text-purple-400">
+                    Max Device
+                  </span>
+                  <p className="text-gray-700">{data.maxDevice} device</p>
                 </div>
                 <div>
                   <span className="text-sm font-semibold text-purple-400">

@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Fastorium",
   description: "Solusi Produk Digital Terbaik",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
